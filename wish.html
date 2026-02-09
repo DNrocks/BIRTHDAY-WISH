@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday ✨</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #e0c3fc);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y:auto;
+}
+
+/* Falling background confetti */
+.confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.confetti span {
+  position: absolute;
+  top: -10%;
+  width: 8px;
+  height: 14px;
+  opacity: 0.7;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(120vh) rotate(360deg);
+  }
+}
+
+/* Celebration burst (on YES) */
+.burst-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+  animation: burst 1s ease-out forwards;
+  z-index: 3;
+}
+
+@keyframes burst {
+  to {
+    transform: translate(var(--x), var(--y)) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.card {
+  background: rgba(255,255,255,0.92);
+  padding: 30px 25px;
+  border-radius: 20px;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-img {
+  width: 150px;
+  max-width: 80%;
+  margin: 10px auto;
+  border-radius: 12px;
+  display: block;
+}
+
+.cake {
+  font-size: 3.5rem;
+}
+
+h1 { margin: 10px 0; }
+h2 { font-weight: 400; font-size: 1.05rem; color: #555; }
+
+.message {
+  font-size: 0.95rem;
+  margin: 15px 0;
+}
+
+/* Heart */
+.heart {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-size: 16px;
+  opacity: 0.6;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Sections */
+.invite, .response {
+  display: none;
+  border-top: 1px dashed #ccc;
+  padding-top: 15px;
+  margin-top: 10px;
+}
+
+.buttons {
+  position: relative;
+  height: 70px;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  position: absolute;
+}
+
+.yes {
+  background: #ff4d6d;
+  color: white;
+  left: 40px;
+}
+
+.no {
+  background: #ddd;
+  right: 40px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Background Confetti -->
+
+<div class="confetti">
+  <span style="left:10%;background:#ff4d6d;animation-duration:10s"></span>
+  <span style="left:25%;background:#ffd166;animation-duration:12s"></span>
+  <span style="left:40%;background:#9b5de5;animation-duration:9s"></span>
+  <span style="left:55%;background:#4cc9f0;animation-duration:11s"></span>
+  <span style="left:70%;background:#f72585;animation-duration:8s"></span>
+  <span style="left:85%;background:#ffd166;animation-duration:13s"></span>
+</div>
+
+<div class="card">
+
+  <!-- Start image (replace if you want) -->
+
+  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDBodWl4cHJya2t4ZHNncmFua3FqNnJ5a2diczVsdHRvbGs2djFtYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OXY6TyrhUNdlu/giphy.gif" class="hero-img">
+
+  <div class="cake">🎂</div>
+
+  <h1>Shubh Janamdin Anoushka Ji🙏</h1>
+  <h2>Ek saal bad gari🚗, daru🍺, aur boards hai💀</h2>
+
+  <div class="message">
+    Bure logo ke nazar🧿 se dur rahiye, sathark rahiye🧿🧿
+  </div>
+
+<button class="heart" id="heartBtn">♥</button>
+
+  <!-- Invite -->
+
+  <div class="invite" id="invite">
+
+```
+<img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" class="hero-img">
+
+<p>Proceed with Caution <br>
+
+Agar Ye window khula hai <br> iska matlab aap observant prakriti ke hai <br> <br> Can I request you to be my gf? <br><br> NO NIBBA NIBBI SHIT I PROMISE <br> Dont worry, yes no press karne se mujhe message nahi jayega
+
+</p>
+
+<div class="buttons" id="buttonArea">
+  <button class="btn yes" id="yesBtn">Yes</button>
+  <button class="btn no" id="noBtn">No</button>
+</div>
+```
+
+  </div>
+
+  <!-- YES -->
+
+  <div class="response" id="yesScreen">
+    <p><strong>Damn Bhai , ye Nahi kiya tha expect</strong></p>
+    <ul style="text-align:left; font-size:0.9rem;">
+      <li>Pls dont get tensed</li>
+      <li>Abhi kuch nahi hai, bas acknowledgement hai</li>
+      <li>Pls kisiko abhi ye cheez bataye nahi</li>
+      <li>I promise mere behaviour mai koi change nahi aayega <br> except the fact that i now know what we can be in the future</li>
+      <li>Agar ye saare condition manzoor tho, pls message with this combination <br> 🧿💀🙏👍🤣</li>
+      <li>Congratulations, starting March, I will regard you as my girlfriend! </li>
+     
+    </ul>
+  </div>
+
+  <!-- NO -->
+
+  <div class="response" id="noScreen">
+    <p><strong> Not an issue at all <br> I just wanted to ask without being disrespectful😊</strong></p>
+    <ul style="text-align:left; font-size:0.9rem;">
+      <li>Kuch awkwardness ki zarurat nahi, i really didn't expect yes anyway</li>
+      <li>Agar Answer nahi hai, to mujhe kuch special denial reply Mat bheje <br> infact aapne aisa kuch dekha tha usko hi acknowledge na kare</li>
+      <li>I will thus assume that this invitation was never even opened..</li>
+      <li>Hence this will make an atmosphere of mystery that will prevent awkwardness from my side</li>
+      <li>Regardless of this, I will still like you as a friend! </li>
+      <li>I hope this message did not traumatize or disrespect you <br> I tried to create this as a non traumatic way of confessing <br> so pls do not let this ruin your 17th birday <br> Lastly, Happy Birthday! </li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  const heart = document.getElementById("heartBtn");
+  const invite = document.getElementById("invite");
+  const yesScreen = document.getElementById("yesScreen");
+  const noScreen = document.getElementById("noScreen");
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const area = document.getElementById("buttonArea");
+
+  // Heart toggle
+  heart.addEventListener("click", () => {
+    const visible = invite.style.display === "block";
+    invite.style.display = visible ? "none" : "block";
+    yesScreen.style.display = "none";
+    noScreen.style.display = "none";
+  });
+
+  // Yes
+  yesBtn.addEventListener("click", () => {
+    invite.style.display = "none";
+    yesScreen.style.display = "block";
+    noScreen.style.display = "none";
+    celebrate();
+  });
+
+  // No
+  noBtn.addEventListener("click", () => {
+    invite.style.display = "none";
+    noScreen.style.display = "block";
+    yesScreen.style.display = "none";
+  });
+
+  // Moving No button
+  function moveNo() {
+    const rect = area.getBoundingClientRect();
+    const maxX = rect.width - 80;
+    const maxY = rect.height - 40;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  }
+
+  noBtn.addEventListener("mouseover", moveNo);
+  noBtn.addEventListener("touchstart", moveNo);
+
+  // Celebration burst
+  function celebrate() {
+    for (let i = 0; i < 40; i++) {
+      const piece = document.createElement("div");
+      piece.className = "burst-piece";
+      piece.style.background = `hsl(${Math.random()*360},80%,60%)`;
+
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 140 + Math.random() * 80;
+
+      piece.style.setProperty("--x", Math.cos(angle) * distance + "px");
+      piece.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 1000);
+    }
+  }
+
+});
+</script>
+
+</body>
+</html>
