@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -20,7 +20,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow-x: hidden;
-  overflow-y:auto;
+  overflow-y: auto;
 }
 
 /* Falling background confetti */
@@ -90,7 +90,12 @@ body {
 }
 
 h1 { margin: 10px 0; }
-h2 { font-weight: 400; font-size: 1.05rem; color: #555; }
+
+h2 {
+  font-weight: 400;
+  font-size: 1.05rem;
+  color: #555;
+}
 
 .message {
   font-size: 0.95rem;
@@ -107,6 +112,7 @@ h2 { font-weight: 400; font-size: 1.05rem; color: #555; }
   background: none;
   border: none;
   cursor: pointer;
+  z-index: 5;
 }
 
 /* Sections */
@@ -137,20 +143,20 @@ h2 { font-weight: 400; font-size: 1.05rem; color: #555; }
   background: #ff4d6d;
   color: white;
   left: 40px;
+  top: 0;
 }
 
 .no {
   background: #ddd;
   right: 40px;
+  top: 0;
 }
 </style>
-
 </head>
 
 <body>
 
 <!-- Background Confetti -->
-
 <div class="confetti">
   <span style="left:10%;background:#ff4d6d;animation-duration:10s"></span>
   <span style="left:25%;background:#ffd166;animation-duration:12s"></span>
@@ -162,9 +168,8 @@ h2 { font-weight: 400; font-size: 1.05rem; color: #555; }
 
 <div class="card">
 
-  <!-- Start image (replace if you want) -->
-
-  <img src="bir.gif" class="hero-img">
+  <!-- Start image -->
+  <img src="bir.gif" class="hero-img" alt="Birthday animation">
 
   <div class="cake">🎂</div>
 
@@ -175,55 +180,57 @@ h2 { font-weight: 400; font-size: 1.05rem; color: #555; }
     Bure logo ke nazar🧿 se dur rahiye, sathark rahiye🧿🧿
   </div>
 
-<button class="heart" id="heartBtn">♥</button>
+  <button type="button" class="heart" id="heartBtn">♥</button>
 
   <!-- Invite -->
-
   <div class="invite" id="invite">
 
-```
-<img src="prop.gif" class="hero-img">
+    <img src="prop.gif" class="hero-img" alt="">
 
-<p>Proceed with Caution <br>
+    <p>
+      Proceed with Caution <br>
+      Congratulations on your observational skills <br><br>
+      [ASK OUT LINE DELETED] <br><br>
+      [MOVE ON BRO AINT GONNA WORK] <br>
+      [COMFORTING MESSAGE TO NOT BE SCARED]
+    </p>
 
-Congratulations on your observational skills <br> <br> [ASK OUT LINE DELETED]  <br><br> [MOVE ON BRO AINT GONNA WORK] <br> [COMFORTING MESSAGE TO NOT BE SCARED]
-
-</p>
-
-<div class="buttons" id="buttonArea">
-  <button class="btn yes" id="yesBtn">Yes</button>
-  <button class="btn no" id="noBtn">No</button>
-</div>
-```
+    <div class="buttons" id="buttonArea">
+      <button type="button" class="btn yes" id="yesBtn">Yes</button>
+      <button type="button" class="btn no" id="noBtn">No</button>
+    </div>
 
   </div>
 
   <!-- YES -->
-
   <div class="response" id="yesScreen">
+
     <p><strong>Damn Bhai , ye Nahi kiya tha expect</strong></p>
+
     <ul style="text-align:left; font-size:0.9rem;">
       <li>[CRINGE]</li>
       <li>[CRINGE DELETED]</li>
       <li>[MSG ASKING NOT TO INFORM ANYONE]</li>
       <li>[MOVE ON BRO]<br>[SHE GONNAGHOST YOU BRO]</li>
       <li>[IF ANSWER YES THEN REPLY] <br> 🧿💀🙏👍🤣</li>
-           
     </ul>
+
   </div>
 
   <!-- NO -->
-
   <div class="response" id="noScreen">
-    <p><strong> Not an issue at all <br> [HAG DIYA BHENCHO]</strong></p>
+
+    <p><strong>Not an issue at all <br> [HAG DIYA BHENCHO]</strong></p>
+
     <ul style="text-align:left; font-size:0.9rem;">
       <li>[AWKWARD]</li>
       <li>[NOT EVEN FRIENDZONE CAN SAVE ME]<br>[💀]</li>
       <li>[ORIGINAL MESSAGES THAT ARE NOT CRINGE]I will thus assume that this invitation was never even opened..</li>
       <li>Hence this will make an atmosphere of mystery that will prevent awkwardness from my side</li>
       <li>[9 MONTHS LATER GODDAMN FOCUS ON JEE]</li>
-      <li>[CRINGE]<br>[CRINGE] <br>[CRINGE] <br> Lastly, Happy Birthday! </li>
+      <li>[CRINGE]<br>[CRINGE] <br>[CRINGE] <br> Lastly, Happy Birthday!</li>
     </ul>
+
   </div>
 
 </div>
@@ -242,6 +249,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Heart toggle
   heart.addEventListener("click", () => {
     const visible = invite.style.display === "block";
+
     invite.style.display = visible ? "none" : "block";
     yesScreen.style.display = "none";
     noScreen.style.display = "none";
@@ -265,23 +273,24 @@ document.addEventListener("DOMContentLoaded", function() {
   // Moving No button
   function moveNo() {
     const rect = area.getBoundingClientRect();
-    const maxX = rect.width - 80;
-    const maxY = rect.height - 40;
+
+    const maxX = Math.max(0, rect.width - noBtn.offsetWidth);
+    const maxY = Math.max(0, rect.height - noBtn.offsetHeight);
 
     const x = Math.random() * maxX;
     const y = Math.random() * maxY;
 
-    noBtn.style.position = "absolute";
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
   }
 
   noBtn.addEventListener("mouseover", moveNo);
-  noBtn.addEventListener("touchstart", moveNo);
+  noBtn.addEventListener("touchstart", moveNo, { passive: true });
 
   // Celebration burst
   function celebrate() {
     for (let i = 0; i < 40; i++) {
+
       const piece = document.createElement("div");
       piece.className = "burst-piece";
       piece.style.background = `hsl(${Math.random()*360},80%,60%)`;
@@ -293,6 +302,7 @@ document.addEventListener("DOMContentLoaded", function() {
       piece.style.setProperty("--y", Math.sin(angle) * distance + "px");
 
       document.body.appendChild(piece);
+
       setTimeout(() => piece.remove(), 1000);
     }
   }
@@ -302,3 +312,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+```
